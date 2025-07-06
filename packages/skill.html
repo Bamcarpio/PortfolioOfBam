@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Graphic Designs</title>
+  <link rel="stylesheet" href="css/style1.css"/>
+</head>
+<body>
+  <h1>My Graphic Designs and Edits</h1>
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="images/1.jpg" alt="Design 1" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/2.jpg" alt="Design 2" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/3.png" alt="Design 3" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/5.jpg" alt="Design 4" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/6.jpg" alt="Design 4" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/7.png" alt="Design 4" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/8.png" alt="Design 4" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/9.png" alt="Design 4" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/14.png" alt="Design 4" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/11.png" alt="Design 4" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/12.png" alt="Design 4" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/13.png" alt="Design 4" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/10.jpg" alt="Design 4" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/15.jpg" alt="Design 4" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/16.jpg" alt="Design 4" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/17.jpg" alt="Design 4" />
+    </div>
+    <!-- Add more images as needed -->
+  </div>
+  <h2>My Video Edits</h2>
+  <div class="gallery video-gallery">
+    <div class="gallery-item">
+      <video src="videos/1.mp4" poster="images/t1.png"></video>
+    </div>
+    <div class="gallery-item">
+      <video src="videos/2.mp4" poster="images/t2.png"></video>
+    </div>
+    <div class="gallery-item">
+      <video src="videos/3.mp4" poster="images/t3.png"></video>
+    </div>
+    <div class="gallery-item">
+      <video src="videos/4.mp4" poster="images/t4.png"></video>
+    </div>
+    <!-- Add more videos as needed -->
+  </div>
+
+  <!-- Image Modal -->
+  <div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img">
+  </div>
+
+  <!-- Video Modal -->
+  <div id="video-modal" class="modal">
+    <span class="close-video">&times;</span>
+    <video class="modal-video" id="modal-video" controls></video>
+  </div>
+
+  <script>
+    // Image Modal Logic
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal-img");
+    const closeBtn = document.getElementsByClassName("close")[0];
+
+    document.querySelectorAll(".gallery-item img").forEach(img => {
+      img.onclick = () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+      };
+    });
+
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    window.onclick = (e) => {
+      if (e.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    // Video Modal Logic
+    const videoModal = document.getElementById("video-modal");
+    const modalVideo = document.getElementById("modal-video");
+    const closeVideoBtn = document.getElementsByClassName("close-video")[0];
+
+    document.querySelectorAll(".video-gallery video").forEach(video => {
+      video.onclick = () => {
+        videoModal.style.display = "block";
+        modalVideo.src = video.src;
+        modalVideo.play();
+      };
+    });
+
+    closeVideoBtn.onclick = () => {
+      videoModal.style.display = "none";
+      modalVideo.pause();
+      modalVideo.currentTime = 0;
+    };
+
+    window.onclick = (e) => {
+      if (e.target == videoModal) {
+        videoModal.style.display = "none";
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+      }
+    };
+  </script>
+</body>
+</html>
